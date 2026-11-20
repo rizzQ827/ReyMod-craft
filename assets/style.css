@@ -266,3 +266,49 @@ section{padding:72px 0}
 .tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--ink-3);white-space:nowrap}
 .tabs button.is-on{color:var(--ink);border-color:var(--grass)}
 @media (max-width:900px){.detail{grid-template-columns:1fr}.side{position:static}}
+
+/* ---------- Additions after design review ---------- */
+.card.is-picked{border-color:var(--grass)}
+.card.is-wide{grid-column:span 12;flex-direction:row}
+.card.is-wide .card__art{width:44%;aspect-ratio:auto;min-height:220px}
+.card.is-wide .card__art svg{width:110px;height:110px}
+.card.is-wide h3{font-size:28px}
+.card.is-feature .card__art,.card.is-wide .card__art{border-bottom:0;border-right:1px solid var(--line)}
+.pick{min-height:40px}
+.craft__count{position:absolute;right:5px;bottom:1px;font-family:var(--font-pixel);font-size:18px;color:#fff;text-shadow:2px 2px 0 #3f3f3f}
+.craft__out .slot{width:72px;height:72px}
+.craft__out .slot svg{width:60%;height:60%}
+.hotbar .slot{border:0;padding:0}
+
+/* HP: kartu jadi baris ringkas (ikon kiri, info kanan) */
+@media (max-width:640px){
+  .card,.card.is-feature,.card.is-wide{grid-column:span 12;flex-direction:row;align-items:stretch}
+  .card .card__art,.card.is-feature .card__art,.card.is-wide .card__art{width:96px;min-height:0;aspect-ratio:auto;flex:none;border-bottom:0;border-right:1px solid var(--line)}
+  .card .card__art svg,.card.is-feature .card__art svg,.card.is-wide .card__art svg{width:52px;height:52px}
+  .card .card__body,.card.is-feature .card__body{padding:12px 56px 12px 12px;gap:4px}
+  .card h3,.card.is-feature h3,.card.is-wide h3{font-size:19px}
+  .card p{font-size:13px}
+  .card__meta{padding-top:4px}
+  .card__meta .tag:nth-child(n+3){display:none}
+  .pick{top:50%;right:8px;left:auto;transform:translateY(-50%);padding:6px;background:transparent;border:0;backdrop-filter:none}
+  .pick .pick__t{display:none}
+  .pick__box{width:34px;height:34px}
+  .pick.is-on{background:transparent}
+  .pick.is-on .pick__box{background:var(--grass-lt)}
+  .pick.is-on .pick__box::after{background:#0f1a0a;box-shadow:none;width:12px;height:12px}
+  .shelf{gap:10px}
+}
+@media (max-width:860px){
+  .nav__in{gap:10px}
+  .nav__cta{margin-left:auto}
+  .nav__burger{margin-left:0;flex:none}
+}
+@media (max-width:400px){
+  .brand{font-size:19px;gap:8px}
+  .brand svg{width:24px;height:24px}
+  .nav__cta .btn{padding:6px 10px}
+}
+/* Pixelify Sans punya ligatur "fi" yang terbaca aneh — matikan */
+body,button,input,select,textarea{font-variant-ligatures:none;font-feature-settings:"liga" 0,"clig" 0}
+.tray{visibility:hidden;transition:visibility 0s .3s}
+.tray.is-show{visibility:visible;transition:none}

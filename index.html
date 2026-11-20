@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReyMod Craft — Mod Minecraft Bedrock</title>
+<meta name="description" content="Mod Minecraft Bedrock buatan ReyMod: lebih nyaman dimainkan, tetap terasa vanilla. Pilih beberapa mod, unduh jadi satu pack.">
+<meta property="og:title" content="ReyMod Craft — Mod Minecraft Bedrock">
+<meta property="og:description" content="Pilih beberapa mod, unduh jadi satu file .mcaddon.">
+<meta name="theme-color" content="#17140f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Crect width='4' height='2' fill='%236ab04c'/%3E%3Crect y='2' width='4' height='2' fill='%238a5a2b'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%2398d36e'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%23c58b4c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Pixelify+Sans:wght@400;500;600&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top" aria-label="ReyMod Craft, ke atas">
+      <svg viewBox="0 0 4 4" shape-rendering="crispEdges" aria-hidden="true"><rect width="4" height="2" fill="#6ab04c"/><rect x="1" width="1" height="1" fill="#98d36e"/><rect x="3" y="1" width="1" height="1" fill="#3f7a2a"/><rect y="2" width="4" height="2" fill="#8a5a2b"/><rect x="1" y="3" width="1" height="1" fill="#c58b4c"/><rect x="3" y="2" width="1" height="1" fill="#c58b4c"/></svg>
+      Rey<b>Mod</b> Craft
+    </a>
+    <nav class="nav__links" aria-label="Menu utama">
+      <a href="#mod">Mod</a>
+      <a href="#pasang">Cara pasang</a>
+      <a href="#pass">ReyMod Pass</a>
+      <a href="#saran">Saran &amp; bug</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="btn btn--ghost btn--sm" type="button" data-login>Masuk</button>
+      <button class="btn btn--gold btn--sm" type="button" data-pass>Ambil Pass</button>
+    </div>
+    <button class="nav__burger" type="button" aria-label="Buka menu" aria-expanded="false">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="#f1ead9" aria-hidden="true"><rect width="18" height="2"/><rect y="6" width="18" height="2"/><rect y="12" width="18" height="2"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="eyebrow">Mod Minecraft Bedrock</span>
+        <h1>Minecraft yang kamu kenal, <em>sedikit lebih</em> nyaman.</h1>
+        <p class="lead">Mod buatan ReyMod menambah kenyamanan bermain tanpa merusak rasa vanilla. Ada fitur dari game spin-off Minecraft, ada juga yang lahir dari saran komunitas.</p>
+        <div class="hero__actions">
+          <a class="btn btn--grass" href="#mod">Jelajahi mod</a>
+          <a class="btn btn--ghost" href="#pasang">Cara kerja 1 pack</a>
+        </div>
+        <div class="hero__stats">
+          <div><strong id="stat-count">0 mod</strong>sudah di rak</div>
+          <div><strong>1 file</strong>untuk banyak mod</div>
+          <div><strong>Bedrock</strong>HP, PC, konsol</div>
+        </div>
+      </div>
+
+      <div class="craft" aria-label="Ilustrasi meja rakit pack">
+        <p class="craft__title">Meja Rakit Pack</p>
+        <div class="craft__row">
+          <div class="craft__grid" id="craft-grid"></div>
+          <svg class="craft__arrow" viewBox="0 0 22 15" shape-rendering="crispEdges" aria-hidden="true"><path fill="#8b8b8b" d="M0 5h14V0h2v2h2v2h2v2h2v3h-2v2h-2v2h-2v2h-2v-5H0z"/></svg>
+          <div class="craft__out">
+            <div class="slot">
+              <svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="6" height="6" fill="#6ab04c"/><rect x="1" y="1" width="6" height="2" fill="#98d36e"/><rect x="1" y="3" width="6" height="4" fill="#8a5a2b"/><rect x="2" y="4" width="1" height="1" fill="#c58b4c"/><rect x="5" y="5" width="1" height="1" fill="#c58b4c"/><rect x="3" y="2" width="1" height="1" fill="#3f7a2a"/></svg>
+              <span class="craft__count">1</span>
+            </div>
+          </div>
+        </div>
+        <p class="craft__cap">Pilih mod mana saja, website merakitnya jadi <b>satu file .mcaddon</b>. Sekali ketuk, semua langsung terpasang di world baru.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KATALOG -->
+  <section id="mod">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Rak mod</span>
+          <h2>Ambil yang kamu suka, sisanya tetap vanilla.</h2>
+        </div>
+        <p>Centang kotak di pojok kartu untuk memasukkan mod ke hotbar pack di bawah layar.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="chips" role="group" aria-label="Filter mod" id="chips"></div>
+        <label class="search">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#a89c84" stroke-width="2" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>
+          <span class="sr">Cari mod</span>
+          <input type="search" id="search" placeholder="Cari mod..." autocomplete="off">
+        </label>
+      </div>
+
+      <div class="shelf" id="shelf"></div>
+    </div>
+  </section>
+
+  <!-- CARA PASANG -->
+  <section id="pasang">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Cara pasang</span>
+          <h2>Tiga langkah, satu kali buka file.</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n">01</div>
+          <h3>Isi hotbar pack</h3>
+          <p>Centang mod yang kamu mau. Maksimal 9 mod per pack, sama seperti 9 slot hotbar.</p>
+        </div>
+        <div class="step">
+          <div class="step__n">02</div>
+          <h3>Rakit &amp; unduh</h3>
+          <p>Tekan "Rakit jadi 1 pack". Kamu dapat satu file .mcaddon berisi semua mod pilihanmu.</p>
+        </div>
+        <div class="step">
+          <div class="step__n">03</div>
+          <h3>Aktifkan di world</h3>
+          <p>Buka file-nya, Minecraft memasang otomatis. Saat bikin world, aktifkan pack di Behavior &amp; Resource Packs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASS -->
+  <section id="pass">
+    <div class="wrap">
+      <div class="pass">
+        <div class="pass__l">
+          <span class="eyebrow">Sekali bayar</span>
+          <h2>ReyMod Pass</h2>
+          <p style="color:var(--ink-2);margin:0">Harganya sengaja dibuat receh. Lebih murah dari repot nyari versi bajakan.</p>
+          <div class="pass__price" id="pass-price">Segera</div>
+          <div style="font-size:14px;color:var(--ink-3);margin-bottom:24px">sekali bayar, berlaku selamanya</div>
+          <button class="btn btn--gold" type="button" data-pass>Ambil ReyMod Pass</button>
+        </div>
+        <div class="pass__r">
+          <ul>
+            <li><span><b>Semua mod terbuka,</b> termasuk yang rilis bulan depan dan tahun depan.</span></li>
+            <li><span><b>Rakit pack tanpa batas.</b> Gabung mod Pass dan mod gratis dalam satu file.</span></li>
+            <li><span><b>Suaramu didengar.</b> Saran dari pemegang Pass masuk antrean prioritas.</span></li>
+            <li><span><b>Tetap ada mod gratis</b> buat yang mau coba dulu.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SARAN -->
+  <section id="saran">
+    <div class="wrap board">
+      <div>
+        <span class="eyebrow">Papan saran</span>
+        <h2 style="font-family:var(--font-pixel);font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.1;margin:8px 0 20px">Punya ide mod? Nemu bug?</h2>
+        <div class="sign">Banyak mod di sini lahir dari saran pemain. Tulis aja, sekecil apa pun idenya.<small>— Rey</small></div>
+      </div>
+      <div class="locked">
+        <form class="form" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px" onsubmit="return false">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div class="field" style="flex:1 1 180px">
+              <label for="fb-type">Jenis</label>
+              <select id="fb-type"><option>Saran fitur</option><option>Kritik</option><option>Laporan bug</option></select>
+            </div>
+            <div class="field" style="flex:1 1 180px">
+              <label for="fb-mod">Untuk</label>
+              <select id="fb-mod"><option>Umum (ke Rey)</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fb-msg">Pesan</label>
+            <textarea id="fb-msg" placeholder="Ceritakan idemu, atau langkah sampai bug-nya muncul..."></textarea>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <button class="btn btn--grass" type="submit" disabled>Kirim</button>
+            <span style="font-size:13px;color:var(--ink-3)">Perlu masuk dulu supaya bisa dibalas.</span>
+          </div>
+        </form>
+        <div class="locked__veil">
+          <div>
+            <p>Papan saran aktif setelah fitur login dibuka. Sebentar lagi!</p>
+            <button class="btn btn--grass btn--sm" type="button" data-login>Masuk</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <b style="font-family:var(--font-pixel);font-size:18px;color:var(--ink);font-weight:500">ReyMod Craft</b>
+      <p>Bukan produk resmi Minecraft. Tidak berafiliasi dengan Mojang atau Microsoft.</p>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap">
+      <a href="#mod">Mod</a><a href="#saran">Lapor bug</a><a href="#pass">Pass</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/jszip.min.js" defer></script>
+<script src="data/mods.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const R = window.ReyMod, $ = R.$;
+  const filters = [
+    { id: "all", label: "Semua" }, { id: "spinoff", label: "Dari spin-off" },
+    { id: "komunitas", label: "Saran komunitas" }, { id: "free", label: "Gratis" }, { id: "pass", label: "ReyMod Pass" }
+  ];
+  let filter = "all", q = "";
+
+  $("#stat-count").textContent = R.MODS.length + " mod";
+  const price = R.CFG.passPrice;
+  $("#pass-price").textContent = price ? "Rp" + Number(price).toLocaleString("id-ID") : "Segera";
+  $("#fb-mod").insertAdjacentHTML("beforeend", R.MODS.map((m) => `<option>${R.esc(m.name)}</option>`).join(""));
+
+  // crafting table hero
+  const order = [0, 3, 5, 1, null, 4, null, 2, null];
+  $("#craft-grid").innerHTML = order.map((k, i) => {
+    const m = k === null ? null : R.MODS[k];
+    return `<div class="slot">${m ? R.iconSVG(m) : ""}</div>`;
+  }).join("");
+
+  function renderChips() {
+    $("#chips").innerHTML = filters.map((f) =>
+      `<button class="chip ${f.id === filter ? "is-on" : ""}" type="button" data-f="${f.id}" aria-pressed="${f.id === filter}">${f.label}</button>`).join("");
+    R.$$("#chips [data-f]").forEach((b) => b.addEventListener("click", () => { filter = b.dataset.f; renderChips(); renderShelf(); }));
+  }
+
+  function renderShelf() {
+    const list = R.MODS.filter((m) =>
+      (filter === "all" || m.origin === filter || m.access === filter) &&
+      (!q || (m.name + " " + m.tagline + " " + m.tags.join(" ")).toLowerCase().includes(q)));
+    if (!list.length) { $("#shelf").innerHTML = `<div class="empty">Belum ada mod yang cocok. Coba kata kunci lain.</div>`; return; }
+    $("#shelf").innerHTML = list.map((m, i) => {
+      const feature = i === 0 && list.length > 2;
+      const wide = !feature && i === list.length - 1 && (list.length - 1) % 3 === 2;
+      const on = R.inPack(m.id);
+      return `
+      <article class="card ${feature ? "is-feature" : ""} ${wide ? "is-wide" : ""} ${on ? "is-picked" : ""}">
+        <div class="card__art" style="${R.artBg(m)}">
+          ${R.iconSVG(m)}
+          <button class="pick ${on ? "is-on" : ""}" type="button" data-pick="${m.id}" aria-pressed="${on}" aria-label="${on ? "Keluarkan" : "Masukkan"} ${R.esc(m.name)} ke pack">
+            <span class="pick__box" aria-hidden="true"></span><span class="pick__t">${on ? "Di pack" : "Pilih"}</span>
+          </button>
+        </div>
+        <div class="card__body">
+          <h3><a href="mod.html?id=${encodeURIComponent(m.id)}">${R.esc(m.name)}</a></h3>
+          <p>${R.esc(m.tagline)}</p>
+          <div class="card__meta">${R.tags(m)}<span class="tag">v${R.esc(m.version)}</span></div>
+        </div>
+      </article>`;
+    }).join("");
+    R.$$("#shelf [data-pick]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); R.togglePack(b.dataset.pick); }));
+  }
+
+  $("#search").addEventListener("input", (e) => { q = e.target.value.trim().toLowerCase(); renderShelf(); });
+  R.onPack(renderShelf);
+  renderChips(); renderShelf();
+})();
+</script>
+</body>
+</html>

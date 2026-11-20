@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mod — ReyMod Craft</title>
+<meta name="theme-color" content="#17140f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Crect width='4' height='2' fill='%236ab04c'/%3E%3Crect y='2' width='4' height='2' fill='%238a5a2b'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%2398d36e'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%23c58b4c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Pixelify+Sans:wght@400;500;600&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 4 4" shape-rendering="crispEdges" aria-hidden="true"><rect width="4" height="2" fill="#6ab04c"/><rect x="1" width="1" height="1" fill="#98d36e"/><rect x="3" y="1" width="1" height="1" fill="#3f7a2a"/><rect y="2" width="4" height="2" fill="#8a5a2b"/><rect x="1" y="3" width="1" height="1" fill="#c58b4c"/><rect x="3" y="2" width="1" height="1" fill="#c58b4c"/></svg>
+      Rey<b>Mod</b> Craft
+    </a>
+    <a href="index.html#mod" style="margin-left:auto;color:var(--ink-2);text-decoration:none;font-size:15px;display:inline-flex;align-items:center;gap:6px;min-height:44px">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>Semua mod
+    </a>
+  </div>
+</header>
+
+<main class="wrap" id="page">
+  <div class="empty" style="margin-top:40px">Memuat mod...</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <b style="font-family:var(--font-pixel);font-size:18px;color:var(--ink);font-weight:500">ReyMod Craft</b>
+      <p>Bukan produk resmi Minecraft. Tidak berafiliasi dengan Mojang atau Microsoft.</p>
+    </div>
+    <div style="display:flex;gap:18px"><a href="index.html#mod">Mod</a><a href="index.html#pass">Pass</a></div>
+  </div>
+</footer>
+
+<script src="assets/jszip.min.js" defer></script>
+<script src="data/mods.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const R = window.ReyMod, $ = R.$, esc = R.esc;
+  const id = new URLSearchParams(location.search).get("id");
+  const m = R.byId(id);
+  const page = $("#page");
+  if (!m) {
+    page.innerHTML = `<div class="empty" style="margin-top:40px">Mod tidak ditemukan. <a class="link" href="index.html#mod">Kembali ke rak mod</a></div>`;
+    return;
+  }
+  document.title = m.name + " — ReyMod Craft";
+  const fmt = (d) => new Date(d + "T00:00:00").toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+  const locked = m.access === "pass" && !R.hasPass();
+
+  page.innerHTML = `
+    <div class="crumbs"><a href="index.html#mod">Mod</a> / ${esc(R.originLabel[m.origin] || "")} / <span style="color:var(--ink)">${esc(m.name)}</span></div>
+    <div class="detail">
+      <div>
+        <div class="detail__hero" style="${R.artBg(m)}">${R.iconSVG(m)}</div>
+        <div class="card__meta" style="padding-top:22px">${R.tags(m)}${m.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+        <h1>${esc(m.name)}</h1>
+        <p class="lead">${esc(m.tagline)}</p>
+        <p style="color:var(--ink-3);font-size:14px;margin:0">${esc(m.originNote || "")}</p>
+        <div class="prose">
+          <h2>Tentang mod ini</h2>
+          <p>${esc(m.desc)}</p>
+          <h2>Yang kamu dapat</h2>
+          <ul>${m.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
+          <h2>Riwayat update</h2>
+          <div class="log">${m.changelog.map((c) => `<div><b>v${esc(c.v)}</b><br>${esc(c.note)}</div>`).join("")}</div>
+          <h2 id="diskusi">Diskusi</h2>
+        </div>
+        <div class="tabs" role="tablist" id="tabs"></div>
+        <div class="locked">
+          <div class="form" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px">
+            <div class="field"><label for="c-msg" id="c-label">Komentar</label><textarea id="c-msg" placeholder=""></textarea></div>
+            <div><button class="btn btn--grass btn--sm" type="button" disabled>Kirim</button></div>
+          </div>
+          <div class="locked__veil"><div>
+            <p>Diskusi aktif setelah fitur login dibuka. Gratis, tanpa Pass.</p>
+            <button class="btn btn--grass btn--sm" type="button" data-login>Masuk</button>
+          </div></div>
+        </div>
+        <p class="note">Belum ada diskusi di mod ini.</p>
+      </div>
+
+      <aside class="side">
+        <dl>
+          <dt>Versi</dt><dd>${esc(m.version)}</dd>
+          <dt>Minecraft</dt><dd>Bedrock ${esc(m.mc)}</dd>
+          <dt>Ukuran</dt><dd>${esc(m.size)}</dd>
+          <dt>Rilis</dt><dd>${fmt(m.released)}</dd>
+          <dt>Akses</dt><dd>${m.access === "free" ? "Gratis" : esc(R.CFG.passName)}</dd>
+        </dl>
+        <button class="btn ${locked ? "btn--gold" : "btn--grass"}" type="button" id="dl">
+          ${locked
+            ? `<svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>Buka dengan Pass`
+            : `<svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2 14h12"/></svg>Unduh .mcaddon`}
+        </button>
+        <button class="btn btn--ghost" type="button" id="pk"></button>
+        <p style="font-size:13px;color:var(--ink-3);margin:0">Masukkan ke pack kalau mau diunduh bareng mod lain dalam satu file.</p>
+        <hr style="border:0;border-top:1px solid var(--line);margin:4px 0;width:100%">
+        <a href="#diskusi" class="link" style="font-size:14px;display:inline-flex;align-items:center;gap:8px;min-height:44px" id="bug-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 1L1 14h14z"/><path d="M8 6v4M8 12v.5"/></svg>Laporkan bug di mod ini
+        </a>
+      </aside>
+    </div>`;
+
+  // tabs
+  const tabs = [
+    { id: "komentar", label: "Komentar", hint: "Gimana pengalamanmu pakai mod ini?" },
+    { id: "saran", label: "Saran", hint: "Fitur apa yang kamu mau ditambah?" },
+    { id: "bug", label: "Laporan bug", hint: "Langkah sampai bug muncul, versi Minecraft, dan perangkat." }
+  ];
+  let tab = "komentar";
+  function renderTabs() {
+    $("#tabs").innerHTML = tabs.map((t) => `<button type="button" role="tab" aria-selected="${t.id === tab}" class="${t.id === tab ? "is-on" : ""}" data-t="${t.id}">${t.label}</button>`).join("");
+    R.$$("#tabs [data-t]").forEach((b) => b.addEventListener("click", () => { tab = b.dataset.t; renderTabs(); }));
+    const t = tabs.find((x) => x.id === tab);
+    $("#c-label").textContent = t.label;
+    $("#c-msg").placeholder = t.hint;
+  }
+  renderTabs();
+  $("#bug-link").addEventListener("click", () => { tab = "bug"; renderTabs(); });
+
+  // buttons
+  $("#dl").addEventListener("click", () => R.downloadOne(m.id));
+  const pk = $("#pk");
+  function syncPk() { const on = R.inPack(m.id); pk.textContent = on ? "Sudah di pack ✓" : "Masukkan ke pack"; pk.classList.toggle("btn--grass", on); pk.classList.toggle("btn--ghost", !on); }
+  pk.addEventListener("click", () => R.togglePack(m.id));
+  R.onPack(syncPk); syncPk();
+})();
+</script>
+</body>
+</html>
